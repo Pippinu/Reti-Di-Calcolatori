@@ -1,5 +1,5 @@
 {
-  "name": "foo",
+  "name": "reti-di-calcolatori",
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
@@ -7,5 +7,23 @@
   },
   "scripts": {
     "start": "node 3post.js"
-  }
+  },
+  "version": "1.0.0",
+  "description": "Progetto reti di calcolatori",
+  "main": "1.0server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pippinu/Reti-Di-Calcolatori.git#main"
+  },
+  "keywords": [
+    "Reti",
+    "Di",
+    "Calcolatori"
+  ],
+  "author": "Alessio Iacono",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pippinu/Reti-Di-Calcolatori/issues"
+  },
+  "homepage": "https://github.com/Pippinu/Reti-Di-Calcolatori/tree/main#readme"
 }
