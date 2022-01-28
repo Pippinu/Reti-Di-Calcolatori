@@ -18,4 +18,8 @@ POST http://localhost:8888/prima_risorsa_post
 
 ###
 
-GET http://localhost:8889/orario?day=oggi
+GET http://localhost:8889/orario?day=domani
+
+###
+
+GET http://localhost:8889/search?id1=12&id2=13
