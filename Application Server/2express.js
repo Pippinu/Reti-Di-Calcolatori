@@ -2,6 +2,7 @@
 // npm install express
 
 var express = require('express');
+// Istanza di Express creata sulla var app
 var app = express();
 
 // Test con POSTMAN o CURL
@@ -9,6 +10,7 @@ var app = express();
 
 // curl localhost:8888
 
+// L'istanza, alla richiesta GET con parametri req, ovvero richiesta e res, ovvero risorsa, sulla risorsa di default ('/'), rispondera con "Sono il root"
 app.get('/', function (req, res) {
   res.send('Sono il root!!!');
 });

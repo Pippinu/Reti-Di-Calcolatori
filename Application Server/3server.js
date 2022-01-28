@@ -4,10 +4,8 @@ var express = require('express');
 var bodyParser = require("body-parser");
 
 var app = express();
+// bodyParser strumento per fare il parsing dei parametri
 app.use(bodyParser.urlencoded({ extended: false }));
-
-
-
 
 app.get('/', function(req, res){
   res.send('hello');
