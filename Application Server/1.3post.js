@@ -3,10 +3,9 @@ var http = require('http');
 var req = require('request');
 
 //Lets define a port we want to listen to
-const PORT=8889; 
+const PORT=8888; 
 
 //Seerver created with POSTMAN
-
 //We need a function which handles requests and send response
 function handleRequest(request, response){
     response.end(contact_remote());
@@ -14,7 +13,7 @@ function handleRequest(request, response){
 
 function contact_remote(){
 	req({
-        url: 'http://localhost:8888', //URL to hit
+        url: 'http://localhost:8889', //URL to hit
         qs: {from: 'blog example', time: +new Date()}, //Query string data
         method: 'POST',
         headers: {
@@ -40,8 +39,6 @@ var server = http.createServer(handleRequest);
 server.listen(PORT, function(){
     //Callback triggered when server is successfully listening. Hurray!
     console.log("Server listening on: http://localhost:%s", PORT);
-
-
 });
 
 
