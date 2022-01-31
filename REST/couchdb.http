@@ -1,0 +1,57 @@
+# https://github.com/apache/couchdb-docker
+#docker run -d --name my-couchdb -p 5984:5984 -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=password %%IMAGE%%:tag
+#docker run -d --name my-couchdb-new -p 5984:5984 -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=admin couchdb
+#[Futon](http://localhost:5984/_utils/) is the built-in, web based, administration interface of CouchDB. It provides a simple graphical interface using which you can interact with CouchDB.
+
+
+GET http://admin:admin@127.0.0.1:5984/_up
+
+###
+# CREATE A DB
+
+PUT http://admin:admin@127.0.0.1:5984/my_database_2
+
+###
+# CHECK DB
+
+GET http://admin:admin@127.0.0.1:5984/_all_dbs
+
+###
+# DELETE A DB
+
+DELETE http://admin:admin@127.0.0.1:5984/my_database
+
+###
+# CREATE a DOC
+
+PUT http://admin:admin@127.0.0.1:5984/my_database/5
+content-type: application/json
+
+{
+    "name": "andrea",
+    "surname": "vitaletti"
+}
+
+###
+#list all docs in the DB
+GET http://admin:admin@127.0.0.1:5984/my_database/_all_docs
+
+###
+# GET CONTENT OF A DOC
+
+GET http://admin:admin@127.0.0.1:5984/my_database/1
+
+###
+# UPDATE A DOC
+PUT http://admin:admin@127.0.0.1:5984/my_database/1
+
+{
+    "_rev": "1-45c49ed10d314f47967b09f808928a77",
+    "name": "mario",
+    "surname": "vitaletti"
+}
+
+###
+# DELETE a DOC
+
+DELETE http://admin:admin@127.0.0.1:5984/my_database/1?rev=2-c8d48abcb0f00e5976dd3f6cd91be3ab
