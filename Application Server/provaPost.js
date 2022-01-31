@@ -1,24 +1,67 @@
-// Axios viene usato per CREARE le richieste
+// Axios viene usato per CREARE e INVIARE le richieste al Server
+// Sul lato server il framework Express si occupa di RICEVERE e GESTIRE le richieste inviate dai client
 var axios = require('axios');
-axios.get()
 
-// Express viene usato per INVIARE le richieste
-var express = require('express');
-var bodyParser = require("body-parser");
-var app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// axios.get('http://localhost:'+ port + '/search')
+// .then((response) => {
+//     console.log(response);
+// })
+// .catch((error) => {
+//     console.log(error);
+// })
 
-var port = 8888;
+// axios.get('http://localhost:'+ port + '/orario', {
+//     // .query
+//     params: {
+//         day: 'oggi'
+//     }
+// })
+// .then((response) => {
+//     console.log(response);
+// })
+// .catch((error) => {
+//     console.log(error);
+// })
 
-var data = {
-    var1: 'CiaoneZi',
-    var2: 'Fratm',
-};
+//// Equivalente alla versione sopra
 
-app.get('/', function(axios, res){
-    console.log('GET RICEVUTA');
-});
+// axios.get('http://localhost:'+ port + '/orario?day=oggi', {
+// })
+// .then((response) => {
+//     console.log(response);
+// })
+// .catch((error) => {
+//     console.log(error);
+// })
 
-app.listen(port);
-console.log('Server started at localhost:'+port);
+//Il secondo parametro, dopo l'URL, e' il body della richiesta POST
+// axios.post('http://localhost:'+ port + '/orario', {
+//     data: {
+//         day: 'oggi',
+//     }
+// })
+// .then((response) => {
+//     console.log(response);
+// })
+// .catch((error) => {
+//     console.log(error);
+// })
+
+// axios.post('http://localhost:'+ port + '/')
+// .then((response) => {
+//     console.log(response);
+// })
+// .catch((error) => {
+//     console.log(error);
+// })
+
+var city = 'Milano';
+axios.post('http://localhost:8888/get_temp', {
+    citta: city,
+})
+.then((response) => {
+    console.log('Valore di ' + city + ': ' + response.data);
+})
+.catch((error) => {
+    console.log(error);
+})

@@ -9,10 +9,12 @@ const PORT=8888;
 function handleRequest(request, response){
     if (request.method === 'GET') {
         response.end('The GET Works!! Path Hit: ' + Math.random());
+        console.log('CiaoneZi')
     } else if (request.method === 'POST') {
         console.log(request);
         //console.log(request.url);
         response.end('The POST Works!! Path Hit: ' + Math.random());
+        console.log('Bella Zi')
     } else response.end('I do not know how to handle this request!');
 }
 

@@ -1,3 +1,5 @@
+// Express viene usato dalla parte Server per gestire e rispondere alle 
+// richieste inviate dal Client che usa moduli come HTTP e Axios per inviarle
 var express = require('express');
 
 // npm install body-parser
@@ -5,7 +7,8 @@ var bodyParser = require("body-parser");
 
 var app = express();
 // bodyParser strumento per fare il parsing dei parametri
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(req, res){
   res.send('hello');
@@ -14,7 +17,7 @@ app.get('/', function(req, res){
 //curl 'http://localhost:8889/search?id1=12&id2=13'
 
 app.get('/search', function(req, res){
-  console.log(req.query)
+  console.log('/search');
   res.send(req.query);
 });
 
@@ -36,8 +39,8 @@ app.post('/', function(req, res){
 
 app.post('/orario', function(req, res){
   var ORARIO = "risultato da DB";
-  res.send('POST orario del treno per il giorno <b> ' + req.body.day + '</b>  ' + ORARIO);
-  console.log("POST"+req.body.day);
+  res.send('POST orario del treno per il giorno <b> ' + req.body.data.day + '</b>  ' + ORARIO);
+  console.log(req.body.data.day);
 });
 
 app.listen(8889);
