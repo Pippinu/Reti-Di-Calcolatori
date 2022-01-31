@@ -1,18 +1,14 @@
-POST http://localhost:8888/stessa_risorsa
+GET http://localhost:8889
 
-###
+### 
 
 POST http://localhost:8889
 
 ###
 
-DELETE http://localhost:8888
+DELETE http://localhost:8889
 
 ###
-
-GET http://localhost:8888
-
-### 
 
 POST http://localhost:8888/prima_risorsa_post
 
@@ -23,3 +19,10 @@ GET http://localhost:8889/orario?day=domani
 ###
 
 GET http://localhost:8889/search?id1=12&id2=13
+
+###
+
+POST http://localhost:8888/stessa_risorsa
+
+###
+http://localhost:8888/get_temp?citta=milano
