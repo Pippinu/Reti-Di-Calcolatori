@@ -24,7 +24,7 @@ DELETE http://admin:admin@127.0.0.1:5984/my_database
 ###
 # CREATE a DOC
 
-PUT http://admin:admin@127.0.0.1:5984/my_database/5
+PUT http://admin:admin@127.0.0.1:5984/my_database/1
 content-type: application/json
 
 {
@@ -56,3 +56,11 @@ PUT http://admin:admin@127.0.0.1:5984/my_database/1
 # DELETE a DOC
 # N.B. Campo rev deve coincidere con il campo rev della risorsa da cancellare
 DELETE http://admin:admin@127.0.0.1:5984/my_database/1?rev=2-c8d48abcb0f00e5976dd3f6cd91be3ab
+
+###
+
+http://localhost:8889/put?id=88
+
+###
+
+POST http://localhost:3000/meteo

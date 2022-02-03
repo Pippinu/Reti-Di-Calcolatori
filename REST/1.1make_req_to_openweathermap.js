@@ -1,36 +1,35 @@
-//const util = require('util')
-require('dotenv').config({ path: '../../../../hide/.env' })
+require('dotenv').config()
+axios = require('axios')
 
-// il file .env è così strutturato, DA TENERE PRIVATO, NON CARICARE SU GITHUB
+// request DEPRECATA, usare axios
+// var request = require('request');
+
+// il file .env è così strutturato, aggiunto a .gitignore
 //
 // METEO_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 // GOOGLE_KEY=yyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 
-
-var request = require('request');
-
 // http://api.openweathermap.org/data/2.5/weather?q=Rome&appid=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-var options = {
-  url: 'http://api.openweathermap.org/data/2.5/weather?q=Roma,IT&appid='+process.env.METEO_KEY,
-}
+// var options = {
+//   url: 'http://api.openweathermap.org/data/2.5/weather?q=Roma,IT&appid='+process.env.METEO_KEY,
+// }
 
 function callback(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    var info = JSON.parse(body);
+  if (!error && response.status == 200) {
     console.log("###############################");
-    console.log(info);
+    console.log(body);
     console.log("###############################");
-    console.log(info.coord);
+    console.log(body.coord);
     console.log("###############################");
-    console.log(info.coord.lon);
+    console.log(body.coord.lon);
     console.log("###############################");
-    console.log(info.coord.lat);
+    console.log(body.coord.lat);
     console.log("###############################");
     console.log("###############################");
-    console.log(info.main);
+    console.log(body.main);
     console.log("###############################");
-    console.log(info.main.temp);
+    console.log(body.main.temp);
 
     // ********************************************************
 /*
@@ -43,5 +42,11 @@ function callback(error, response, body) {
     // ********************************************************
   }
 }
+// GET CALL USANDO request
+// request.get(options, callback);
 
-request.get(options, callback);
+// GET CALL USANDO axios
+axios.get('http://api.openweathermap.org/data/2.5/weather?q=Roma,IT&appid='+process.env.OPEN_WEATHER_KEY)
+.then((response, error) => callback(error, response, response.data))
+// In caso la citta non sia trovata, error.response.data.message conterra la scritta 'city not found'
+.catch((error) => console.log(error.response.data.message));
