@@ -1,7 +1,7 @@
 //const util = require('util')
 require('dotenv').config({ path: '../../../../hide/.env' })
 
-// il file .env è scoì strutturato
+// il file .env è così strutturato, DA TENERE PRIVATO, NON CARICARE SU GITHUB
 //
 // METEO_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 // GOOGLE_KEY=yyyyyyyyyyyyyyyyyyyyyyyyyyyyy
