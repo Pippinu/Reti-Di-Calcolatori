@@ -15,6 +15,17 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         var key = (args.length > 0) ? args[0] : 'anonymous.info';
         var msg = args.slice(1).join(' ') || 'Hello World!';
 
+        // In questo caso l'Exchange opera in modalita Topic, in questo caso le Routing Key
+        // non possono essere parole arbitrarie, ma una serie di parole e punti 
+        // (i.e. Ford.Focus.Blu.Elettrico, Fiat.Panda.Rosso.Opaco), in questo caso i messaggi
+        // verranno inviati alle code che condividono parole specifiche tra queste come Binding Key
+        
+        // Ad esempio sulla coda Q1 verranno mappate tutte le auto Blu, quindi *.Blu.*.
+        // Sulla coda Q2 verranno mappate tutte le Ford, quindi Ford.#
+        // Sulla coda Q3 verranno mappate tutte le auto opache, quindi *.*.opaco
+
+        // * = Sostituisce una parola
+        // # = Sostituisce zero o piu parole
         channel.assertExchange(exchange, 'topic', {
             durable: false
         });

@@ -42,7 +42,13 @@ amqp.connect('amqp://localhost', function(error0, connection) {
 
             channel.sendToQueue('rpc_queue',
                 Buffer.from(num.toString()), {
+                    // Utile per correlare RPC request e response 
                     correlationId: correlationId,
+                    // Message Property che indica l'indirizzo della coda di callback su cui verra salvato il 
+                    // response dal server
+                    // Qui sorge un problema, e' sconveniente creare una coda per ogni RPC request, quindi usiamo
+                    // una singola coda dove verrano messe tutte le RPC response che saranno smistate ai vari client
+                    // in base al loro correlationID
                     replyTo: q.queue
                 });
         });

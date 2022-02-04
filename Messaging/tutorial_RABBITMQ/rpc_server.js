@@ -15,6 +15,8 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         channel.assertQueue(queue, {
             durable: false
         });
+        // .prefetch(1) assegna ad ogni consumer/worker max 1 messaggio alla volta, cosi da non sovraccaricarlo
+        // fin quando il consumer/worker non l'avra processato ed avra inviato l'ACK al broker
         channel.prefetch(1);
         console.log(' [x] Awaiting RPC requests');
         channel.consume(queue, function reply(msg) {

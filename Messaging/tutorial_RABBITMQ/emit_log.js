@@ -16,6 +16,9 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         channel.assertExchange(exchange, 'fanout', {
             durable: false
         });
+        // Invia il messaggio all'exchange, il secondo parametro corrispondente alla stringa vuota
+        // indica che non vogliamo inviare il messaggio ad una specifica coda, ma vogliamo solamente
+        // inviare (to Publish) il messaggio all'Exchange
         channel.publish(exchange, '', Buffer.from(msg));
         console.log(" [x] Sent %s", msg);
     });
